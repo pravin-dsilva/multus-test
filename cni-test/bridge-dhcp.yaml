@@ -1,14 +1,15 @@
 apiVersion: "k8s.cni.cncf.io/v1"
 kind: NetworkAttachmentDefinition
 metadata:
-  name: bridge-dhcp
+  name: bridge-dhcp-test
 spec:
   config: '{
-          "name": "bridge-dhcp",
-          "type": "bridge",
-          "ipMasq": true,
-          "bridge": "bridgedhcp",
-          "ipam": {
-                    "type": "dhcp",
-          }
-  }'
+      "cniVersion": "0.3.0",
+      "type": "bridge",
+      "bridge": "testbr1",
+      "hairpinMode": true,
+      "master": "env32",
+      "ipam": {
+        "type": "dhcp"
+      }
+    }'
